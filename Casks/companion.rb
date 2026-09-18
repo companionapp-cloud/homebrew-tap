@@ -12,8 +12,8 @@
 #
 #   brew install --cask companionapp-cloud/tap/companion
 cask "companion" do
-  version "0.6.1"
-  sha256 "2e1b1abe857bb9c80fe46307367418634a870e867c0f9ca7bcb835ee5de43dd6"
+  version "0.7.0"
+  sha256 "5a30fa6f86f27b785940f8ac0fb78724041e8d38b17da86a74316a7f09a77bdf"
 
   url "https://github.com/companionapp-cloud/companion/releases/download/v#{version}/Companion-#{version}-macos-universal.zip"
   name "Companion"
@@ -25,7 +25,12 @@ cask "companion" do
     strategy :github_latest
   end
 
-  # The build is not notarized; Homebrew's auto-update check would see nothing.
+  # The app updates itself (apps/desktop/updates.go in the main repo), but this stays false
+  # for now: `auto_updates true` would make a plain `brew upgrade` skip the cask, stranding
+  # installs from before the updater existed (0.6.1 and earlier), which can only get it
+  # through Homebrew. The cost of false is small: after the app updates itself, the next
+  # `brew upgrade` reinstalls that same version, because Homebrew's record lags. Flip it
+  # once those old installs have moved on.
   auto_updates false
   depends_on :macos
 
