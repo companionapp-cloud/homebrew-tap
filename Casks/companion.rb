@@ -12,8 +12,8 @@
 #
 #   brew install --cask companionapp-cloud/tap/companion
 cask "companion" do
-  version "0.13.0"
-  sha256 "be928a00c8493fc5605e7cdee9e07790e79096efa6f3a5761a703124b83db118"
+  version "0.13.1"
+  sha256 "ea5032102bd37208bdc861a6c44a98da2f927a7ec4e11052501be6faf4886d07"
 
   url "https://github.com/companionapp-cloud/companion/releases/download/v#{version}/Companion-#{version}-macos-universal.zip"
   name "Companion"
