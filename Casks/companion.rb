@@ -12,8 +12,8 @@
 #
 #   brew install --cask companionapp-cloud/tap/companion
 cask "companion" do
-  version "0.29.1"
-  sha256 "3cc313b5dd63ce7dd3f9eb4be675cecd8917b114b5a69022f8e5dac71c74186d"
+  version "0.30.0"
+  sha256 "20f9eed5c4c0531d1f2528189a58b12b941de2bdc8671e4328165d43478530db"
 
   url "https://github.com/companionapp-cloud/companion/releases/download/v#{version}/Companion-#{version}-macos-universal.zip"
   name "Companion"
@@ -35,6 +35,9 @@ cask "companion" do
   depends_on :macos
 
   app "Companion.app"
+  # `companion mcp` is the MCP server Claude Code and Codex start from a terminal; the
+  # Companion plugin for both runs it by this name (plugins/companion in the main repo).
+  binary "#{appdir}/Companion.app/Contents/MacOS/companion-desktop", target: "companion"
 
   # Strip the quarantine attribute Homebrew applied to the download so the ad-hoc
   # signed bundle launches like a locally built one. Runs after the app is moved
